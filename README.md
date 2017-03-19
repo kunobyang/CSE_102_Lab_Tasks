@@ -5,3 +5,5 @@
 তাই আমার প্রস্তাব হচ্ছে প্রতি ল্যাব গ্রুপের (দুই section মিলে ৪ টা ল্যাব গ্রুপ) দক্ষ কয়েকজন দায়িত্ব নিক, ল্যাবে দেওয়া problem-গুলোর statement এবং solution এই গ্রুপে দেওয়ার জন্য। এটা করলে আমারা এক গ্রুপের student অন্য গ্রুপে দেওয়া problem-ও practice করার সুযোগ পাব। এছাড়া আমারা যেহেতু নতুন শিখছি তাই নিজে পারলেও অন্যের solution দেখা helpful.
 
 Saifullah Talukder, A2
+
+//Copied from Facebook post
