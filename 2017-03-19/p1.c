@@ -13,13 +13,13 @@
 		.
 		.
 		for n = 9 -->
-		                9 
-					  9 8 9 
-					9 8 7 8 9 
-				  9 8 7 6 7 8 9 
-				9 8 7 6 5 6 7 8 9 
-			  9 8 7 6 5 4 5 6 7 8 9 
-			9 8 7 6 5 4 3 4 5 6 7 8 9 
+				9 
+			      9 8 9 
+			    9 8 7 8 9 
+			  9 8 7 6 7 8 9 
+			9 8 7 6 5 6 7 8 9 
+		      9 8 7 6 5 4 5 6 7 8 9 
+		    9 8 7 6 5 4 3 4 5 6 7 8 9 
 		  9 8 7 6 5 4 3 2 3 4 5 6 7 8 9 
 		9 8 7 6 5 4 3 2 1 2 3 4 5 6 7 8 9
 	
@@ -30,14 +30,14 @@
 		secondly, i numbers each starting from n and ending with n-i+1.
 			these two together looks like this: (n=9)
 			                9 
-						  9 8 
-						9 8 7 
-					  9 8 7 6 
-					9 8 7 6 5 
-				  9 8 7 6 5 4 
-				9 8 7 6 5 4 3 
+				      9 8 
+				    9 8 7 
+				  9 8 7 6 
+				9 8 7 6 5 
+			      9 8 7 6 5 4 
+			    9 8 7 6 5 4 3 
 			  9 8 7 6 5 4 3 2 
-			9 8 7 6 5 4 3 2 1
+			9 8 7 6 5 4 3 2 1 
 			hope you can figure out this much!
 		thirdly, i-1 numbers each starting with (n-i+2) which equals (n-i+1) + 1. Observe that, its the number next to
 		the last number of second portion. Anyway it'll start with (n-i+1 + 1) and will end with n.
