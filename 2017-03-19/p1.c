@@ -1,8 +1,8 @@
 /*
     problem statement:
-        for n = 1 -->
-        1
-        for n = 2 -->
+		for n = 1 -->
+		1
+		for n = 2 -->
 		  2
 		2 1 2
 		for n = 3 -->
