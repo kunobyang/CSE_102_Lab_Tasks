@@ -13,6 +13,7 @@ system("cls"); clears the terminal.
 gotoxy(x, y) takes the cursor to the row y and column x.
 If you don't recognize the keywords inside gotoxy(x, y)
 then dont't try to. I don't either. :p
+Most probably, both of the functions won't work outside windows os.
 */
  
 #include<stdio.h>
