@@ -68,8 +68,8 @@ int main()
 	
 	int i, j, k;
 	for(i=1; i<=n; ++i) {
-		for(j=1; j<=n-i; ++j) printf("  ");				// first portion. space printing
-		for(j=1; j<=i; ++j) printf("%d ", n-j+1);		// second portion. printing n to n-i+1
+		for(j=1; j<=n-i; ++j) printf("  ");		// first portion. space printing
+		for(j=1; j<=i; ++j) printf("%d ", n-j+1);	// second portion. printing n to n-i+1
 		for(j=1; j<i; ++j) printf("%d ", n-i+1 + j);	// third portion. printing n-i+1+1 through n
 		printf("\n");
 	}
