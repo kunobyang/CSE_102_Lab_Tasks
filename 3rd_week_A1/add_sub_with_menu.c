@@ -21,6 +21,7 @@ then dont't try to. I don't either. :p
 int menu ();
 void addition ();
 void subtraction ();
+void gotoxy (int x, int y);
  
 int main()
 {
