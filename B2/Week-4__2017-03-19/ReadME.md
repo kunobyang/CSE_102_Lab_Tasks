@@ -11,4 +11,7 @@ Problems ( 4 )
     2. #loop #exponent
     3. #loop #prime
     4. #loop #binomial #pattern
+
+Contributors ( 1 )
+    1. rafid ( 1605109 )
 </pre>
