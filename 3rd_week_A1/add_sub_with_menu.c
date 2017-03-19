@@ -1,5 +1,5 @@
 //Task of A1 3rd week lab
-//Coded by Mohammad Solaiman
+//Solution by Mohammad Solaiman
  
 /*
 You have to add or subtract two numbers. First you will prompt the user
