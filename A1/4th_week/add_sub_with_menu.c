@@ -1,4 +1,4 @@
-//Task of A1 3rd week lab
+//Task of A1 4th week lab
 //Solution by Mohammad Solaiman
  
 /*
