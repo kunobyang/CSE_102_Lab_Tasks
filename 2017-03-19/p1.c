@@ -39,8 +39,8 @@
 			  9 8 7 6 5 4 3 2 
 			9 8 7 6 5 4 3 2 1
 			hope you can figure out this much!
-		thirdly, i-1 numbers each starting with (n-i+2) which equals (n-i+1) + 1. Observe that, its the number next to the last number
-		of second portion. Anyway it'll start with (n-i+1 + 1) and will end with n.
+		thirdly, i-1 numbers each starting with (n-i+2) which equals (n-i+1) + 1. Observe that, its the number next to
+		the last number of second portion. Anyway it'll start with (n-i+1 + 1) and will end with n.
 			only this part will look like this: (n=9)
 
 			9 
