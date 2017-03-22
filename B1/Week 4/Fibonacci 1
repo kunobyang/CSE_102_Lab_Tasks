@@ -2,7 +2,7 @@
     Problem Statement:
     Write a function that takes an integer as argument and returns The nth Fibonacci number.
     Then take a positive integer as input from main() and print the answer.
-    Prompt the user to taking input.
+    Prompt the user to give input.
 */
 
 #include<stdio.h>
