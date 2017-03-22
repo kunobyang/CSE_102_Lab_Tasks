@@ -1,7 +1,7 @@
 /*
     Problem Statement:
     Write a function that takes an integer as argument and returns The nth Fibonacci number.
-    Then take an non-negative integer as input from main() and print the answer.
+    Then take an positive integer as input from main() and print the answer.
     Prompt the user while taking input.
 */
 
