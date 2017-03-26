@@ -1,6 +1,6 @@
 /*
     Problem Statement:
-        Tick Tock
+        Tick Tock?
         ---------
         You're given two integers h1, m1 which denotes the time of a clock by h1:m1. You're asked what will be the clock time
         after h2 hours and m2 minutes. h2, m2 will be provided. Note that this clock is 12 hour clock.
