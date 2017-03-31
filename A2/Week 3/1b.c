@@ -1,4 +1,4 @@
-///problem 1-b
+///problem 1-b coded by Saifullah Talukder
 /*
 Take x and n as input and and find the sum of the following two series upto nth term.
 sinx (Please find the series online or somewhere else. It's difficult to write it here.)
