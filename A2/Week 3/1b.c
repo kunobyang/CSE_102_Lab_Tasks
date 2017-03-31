@@ -1,4 +1,8 @@
 ///problem 1-b
+/*
+Take x and n as input and and find the sum of the following two series upto nth term.
+sinx (Please find the series online or somewhere else. It's difficult to write it here.)
+*/
  
 #include <stdio.h>
  
