@@ -1,4 +1,7 @@
-///problem 5
+/*
+Problem 5 coded by Saifullah Talukder
+Take an integer as input and print "Yes" (without quotes) if it's a fibonacci number, print "No" (without quotes) if not.
+*/
  
 #include <stdio.h>
  
