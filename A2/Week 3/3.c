@@ -1,4 +1,8 @@
-///problem 3
+/*
+Problem 3 coded by Saifullah Talukder
+Statement:
+Take two integers as input and find the number of prime numbers between them (inclusive).
+*/
  
 #include <stdio.h>
  
