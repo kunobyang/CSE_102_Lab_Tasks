@@ -3,7 +3,8 @@
 
 /* 
 Problem Statement
-Take x and n as input and and find the sum of the following series upto nth term : e^-x (Please find the series online or somewhere else. It's difficult to write it here.)
+Take x and n as input and and find the sum of the following series upto nth term.
+e^-x (Please find the series online or somewhere else. It's difficult to write it here.)
 */
 
 #include <stdio.h>
