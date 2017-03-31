@@ -1,4 +1,9 @@
-///problem 2
+/*
+Problem 2 coded by Saifullah Talukder
+Statement:
+Take two integers as input and find the LCM (least common multiple) of them. (Finding GCD i.e greatest common divisor to do is prohibited).
+*/
+
  
 #include <stdio.h>
  
@@ -18,6 +23,7 @@ int main ()
 }
  
 /*
+solution using GCD
     lcm=a*b;
  
     while (b>0) {
