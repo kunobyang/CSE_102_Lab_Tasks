@@ -25,8 +25,8 @@ int main()
 	int cnt[26];
 	memset(cnt, 0, sizeof cnt);		// initializing to zero
 	
-	int l = strlen(s), i;
-	for(i=0; i<l; ++i) ++cnt[s[i]-'a'];
+	int l = strlen(s), i;			// strlen returns the length of a string
+	for(i=0; i<l; ++i) ++cnt[s[i]-'a'];	// observe carefully
 	
 	for(i=0; i<26; ++i) {
 		if(cnt[i]) {
