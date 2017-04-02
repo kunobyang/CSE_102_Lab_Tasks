@@ -3,7 +3,7 @@ CSE '16
 Section: B2
 
 CSE 102
-Week 6
+Week 6 ( Online )
 April 2, 2017
 
 Problems ( 4 )
