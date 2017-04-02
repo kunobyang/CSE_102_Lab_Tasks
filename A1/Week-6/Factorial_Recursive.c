@@ -1,4 +1,9 @@
 #include<stdio.h>
+/*
+Write a function that takes n as input and returns factorial of n. The function should be recursive.
+The recursive formula: factorial(n) = { 1                   for n = 1
+                                      { n * factorial(n-1)  for n > 1
+*/
 
 int fact(int n)
 {
