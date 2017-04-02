@@ -1,4 +1,9 @@
 #include<stdio.h>
+/*
+You have solve the tower of hanoi problem for n disks with 3 rods.
+https://en.wikipedia.org/wiki/Tower_of_Hanoi
+*/
+
 
 void hanoi(int n, int s, int h, int d)
 {
