@@ -1,5 +1,11 @@
 #include<stdio.h>
 
+/*
+Write a program that takes two integers as input and prints their gcd. 
+You will have to use euclidean algorithm.
+https://en.wikipedia.org/wiki/Euclidean_algorithm
+*/
+
 int gcdFunction (int a, int b)
 {
     if (a%b==0) return b;
