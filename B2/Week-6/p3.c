@@ -38,9 +38,10 @@ int main()
 	for(i=0; i<n; ++i) {
 		if(min > a[i]) min = a[i];
 		if(max < a[i]) max = a[i];
-		stdev += abs(a[i] - mean);
+		stdev += (a[i] - mean) * (a[i] - mean);
 	}
 	stdev /= n;
+	stdev = sqrt(stdev);
 	
 	printf("Minimum: %d\n", min);
 	printf("Maximum: %d\n", max);
