@@ -22,8 +22,7 @@ int main()
 	scanf("%s", s);
 	
 	// doing only for lower case letters
-	int cnt[26];
-	memset(cnt, 0, sizeof cnt);		// initializing to zero
+	int cnt[26] = { 0 };	// initializing to zero
 	
 	int l = strlen(s), i;			// strlen returns the length of a string
 	for(i=0; i<l; ++i) ++cnt[s[i]-'a'];	// observe carefully
