@@ -13,6 +13,7 @@
  *  SOLUTION:
  * -----------
  *  	At first I have sorted the array using bubble sort. You can use other algorithms for sorting too.
+ *	As far as I can remember Ashik sir explained selection sort in the class.
  * 	http://quiz.geeksforgeeks.org/bubble-sort/
  *	https://www.youtube.com/watch?v=Jdtq5uKz-w4
  * 
