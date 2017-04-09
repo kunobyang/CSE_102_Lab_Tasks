@@ -1,10 +1,8 @@
 /*
 Problem 3 coded by Saifullah Talukder
 Statement:
-Write a program that replaces all occurrence of an element in an array of elements. The
-first line contains three integers. They are number of elements in the array, the number
-to be replaced and the number to be replaced with. The elements of the array will also
-be input.
+Write a program that replaces all occurrence of an element in an array of elements. The first line contains three integers. They are number
+of elements in the array, the number to be replaced and the number to be replaced with. The elements of the array will also be input.
 */
 
 #include<stdio.h>
