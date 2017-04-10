@@ -1,6 +1,10 @@
 #include<stdio.h>
 int v, A[1000];
 
+/*
+    To see, how this algo works, go to https://csacademy.com/lesson/binary_search/
+*/
+
 int binarySearch(int leftIndex, int rightIndex)
 {
     if (leftIndex > rightIndex) return -1;
