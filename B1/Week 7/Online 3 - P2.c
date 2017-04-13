@@ -1,5 +1,22 @@
 /*
-Add Problem description here
+You are given a array of integers. You can assume that none of them are negative.
+You have to print them in the order of their frequency in the array and also their
+corresponding frequency.
+
+For example, say you have the array - 1,0,2,1,0,1,5,2,3.
+Here numbers 0 to 5 appear. 0 appears twice, 1 thrice,
+2 twice, 3 and 5 appears once. So, in order of of frequency,
+the numbers are 4,3,5,0,2,1.
+Note that numbers with same frequency must be order according to
+their values.
+
+Sample:
+Input:                      Output:
+n = 7                       The numbers are: 2, 1, 0, 3
+array = 3 0 2 0 3 0 3       Corresponding Frequency: 0, 1, 3, 3
+
+n = 4                       The numbers are: 0, 1, 2, 3, 4, 5
+array = 5 5 5 5             Corresponding Frequency: 0, 0, 0, 0, 0, 4
 */
 
 #include<stdio.h>
