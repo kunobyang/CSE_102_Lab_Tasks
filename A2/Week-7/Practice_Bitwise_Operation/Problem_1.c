@@ -50,7 +50,7 @@ int main()
     printf ("Union : ");
     for (i=0;i<26;i++) {
         if (xtractBit(U)) printf ("%c ",'a'+i);
-        U>>1;
+        U=U>>1;
     }
     printf ("\n");
 
@@ -58,7 +58,7 @@ int main()
     printf ("Intersection : ");
     for (i=0;i<26;i++) {
         if (xtractBit(I)) printf ("%c ",'a'+i);
-        I>>1;
+        I=I>>1;
     }
     printf ("\n");
 
@@ -66,7 +66,7 @@ int main()
     printf ("Minus : ");
     for (i=0;i<26;i++) {
         if (xtractBit(M)) printf ("%c ",'a'+i);
-        M>>1;
+        M=M>>1;
     }
 
     return 0;
