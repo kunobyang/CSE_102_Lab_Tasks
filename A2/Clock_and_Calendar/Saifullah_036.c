@@ -391,6 +391,6 @@ int main()
 {
     GetTime();
     iSetTimer(1000,UpdateTime);
-	iInitialize(1024, 576, "Clock_and_Calendar");
-	return 0;
+    iInitialize(1024, 576, "Clock_and_Calendar");
+    return 0;
 }
