@@ -1,3 +1,9 @@
+/*
+  Write a function that takes two strings s1 and s2 and concatenates
+  or appends s2 to the end of s1.
+*/
+
+
 #include<stdio.h>
 
 int LIM=100;
