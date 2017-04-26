@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+/* Multiply two numbers using bitwise operators. You are not allowed 
+   to use * operator */
 
 int main()
 {
