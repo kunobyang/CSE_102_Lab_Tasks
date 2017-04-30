@@ -1,4 +1,6 @@
 /*
+    @author: Zunaed Karim Sifat (1605113)
+
     PROBLEM DESCRIPTION:
 
         For a given string, print how many words, letters, vowels, consonants & symbols that string contains.
