@@ -1,0 +1,54 @@
+/*******************
+    
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+// Naive application of string matching algorithm.
+// https://www.youtube.com/watch?v=RhNM6jvvNjU
+int find(char string[], char sub[])
+{
+    int pos = -1, i, j, len;
+
+    for (i = 0, len = strlen(string)-strlen(sub); i <= len; i++)
+    {
+        if (string[i] == sub[0])
+        {
+            for (j = 1; j < strlen(sub); j++)
+                if (string[i+j] != sub[j])
+                    break;
+
+            if (j == strlen(sub))
+            {
+                pos = i;
+                break;
+            }
+        }
+    }
+
+    return pos;
+}
+
+int main()
+{
+    //gettting the strings
+    char string[1000], sub[100];
+    gets(string);
+    gets(sub);
+    
+    int i = 0, j;
+    if (find(string, sub) == -1) puts("not found");
+    else
+    {
+        for (i = 0; i < strlen(string); i+=find(string+i, sub)+1)
+        {
+            if (find(string+i, sub) != -1)
+                printf("%d\n", find(string+i, sub)+i);
+            else break;
+        }
+    }
+
+    return 0;
+}
+
