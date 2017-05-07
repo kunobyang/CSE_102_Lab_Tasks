@@ -57,3 +57,10 @@ int main(void)
 
     return 0;
 }
+
+/*
+Some corner case to check your solution's validity:
+abc
+aaabbbc
+d
+*/
