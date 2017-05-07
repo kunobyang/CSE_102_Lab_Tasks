@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 char in[1007];
-int ct[1007];
+int ct[26];
 /*
  ct[0] counts the frequency of 'a'
  ct[1] counts the frequency of 'b'
