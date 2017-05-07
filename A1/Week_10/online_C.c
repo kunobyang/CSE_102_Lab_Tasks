@@ -21,9 +21,9 @@ int main(void)
         // from which we shall check the next i characters
         
         for (j = 0; j+i-1 < n1; j++) {
-            // j fixes the index of the string x
+            // j fixes the starting index of the string x
             for (k = 0; k+i-1 < n2; k++) {
-                // k fixes the index of the string y
+                // k fixes the starting index of the string y
                 
                 for (l = 0; l < i; l++) {
                     if (x[j+l]!=y[k+l]) break;
