@@ -1,3 +1,13 @@
+/*
+    Declare an 2D array with random values. Then find out the sizes of int, int*, int**
+    and the adress of the array.
+    
+    Then use this values to calculate the values of various expressions concering pointers
+    and verify your values via the program.
+*/
+
+
+
 #include<stdio.h>
 
 int main()
