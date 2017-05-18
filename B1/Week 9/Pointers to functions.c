@@ -1,3 +1,13 @@
+/*
+Write a function process which takes a pointer to function as input and returns integer.
+The function process will take two integers from the user, pass them to the function pointer
+and return result obtained.
+
+The prototype of the function must be int process(int*(*pf)(int*,int*)).
+
+Use the function process to find the sum, difference and maximum of two integers.
+*/
+
 #include<stdio.h>
 
 int process(int*(*pf)(int*,int*))
