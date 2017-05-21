@@ -1,31 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-char *mystrstr(char *str1, char *str2) {
-	int i, j, k;
-	for(i=0; *(str1+i); ++i) {
-		for(j=0; *(str2+j); ++j)
-			if(*(str1+i+j) != *(str2+j)) break;
-		
-		if(!(*(str2+j))) return (str1+i);
-	}
-	
-	return "NULL";
+const int MAX_NUM = 1e6;
+const double eps = 1e-9;
+
+struct point {
+	double x, y;
+};
+
+struct circle {
+	struct point cn;
+	double r;
+};
+
+int inSide(struct point p, struct circle c) {
+	double temp = (c.cn.x - p.x) * (c.cn.x - p.x) + (c.cn.y - p.y) * (c.cn.y - p.y) - c.r * c.r;
+	return (temp-eps) <= 0 ? 1 : 0;
 }
 
+// the square is 1x1
 int main()
 {
-	char *str1;
-	char *str2;
-	str1 = (char *) malloc (100 * sizeof(char));
-	str2 = (char *) malloc (100 * sizeof(char)); 
-
-	gets(str1);
-	gets(str2);
+	struct circle c;
+	c.cn.x = 0.5, c.cn.y = 0.5, c.r = 0.5;
 	
-	printf("%s\n", mystrstr(str1, str2));
-	free(str1);
-	free(str2);
-
+	int cnt = 0, i;
+	srand((unsigned) time(NULL));
+	
+	struct point p;
+	for(i=0; i<MAX_NUM; ++i) {
+		p.x = (double) rand() / RAND_MAX;
+		p.y = (double) rand() / RAND_MAX;
+		if(inSide(p, c)) ++cnt;
+	}
+	
+	double pi = 4 * ((double) cnt/MAX_NUM);
+	printf("%lf\n", pi);
+	
 	return 0;
 }
