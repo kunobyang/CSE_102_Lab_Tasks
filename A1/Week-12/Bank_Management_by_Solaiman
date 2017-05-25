@@ -1,0 +1,268 @@
+#include<stdio.h>
+int totalTrans, totalAc;
+
+typedef struct dd {
+    int day;
+    int month;
+    int year;
+} date;
+
+typedef struct tt {
+    int TID;
+    char TDescription[100];
+    int Ttype;
+    int Tamount;
+    int afterBalance;
+    date Tdate;
+} transaction;
+
+typedef struct aa {
+    char ac_name[100];
+    int transDone;
+    transaction history[100];
+    date AcOpenDate;
+    int balance;
+} ac;
+
+ac account[1000];
+date today;
+
+
+void showAcBalance()
+{
+    printf("Show Balance\n\n");
+    int ac_num;
+    printf("Please input Account No: ");
+    scanf("%d", &ac_num);
+    if (ac_num < 1 || ac_num > totalAc) {
+        printf("INVALID ACCOUNT NO!\n");
+        getch();
+        return;
+    }
+    printf("Account Balance: %d\n", account[ac_num].balance);
+    getch();
+}
+
+void depositMoney()
+{
+    printf("Deposit Money\n\n");
+    int ac_num, amount;
+    printf("Please input Account No: ");
+    scanf("%d", &ac_num);
+    if (ac_num < 1 || ac_num > totalAc) {
+        printf("INVALID ACCOUNT NO!\n");
+        getch();
+        return;
+    }
+    printf("Please input the amount to deposit: ");
+    scanf("%d", &amount);
+
+    printf("Deposited %d\n", amount);
+    account[ac_num].balance += amount;
+    printf("Balance after deposit: %d\n", account[ac_num].balance);
+    totalTrans++;
+    account[ac_num].transDone++;
+    account[ac_num].history[account[ac_num].transDone].Tamount = amount;
+    account[ac_num].history[account[ac_num].transDone].afterBalance = account[ac_num].balance;
+    account[ac_num].history[account[ac_num].transDone].Tdate = today;
+    account[ac_num].history[account[ac_num].transDone].Ttype = 1;
+    account[ac_num].history[account[ac_num].transDone].TID = totalTrans;
+    printf("Transaction ID: %d\n", totalTrans);
+    getch();
+}
+
+void withdrawMoney()
+{
+    printf("Withdraw Money\n\n");
+    int ac_num, amount;
+    printf("Please input Account No: ");
+    scanf("%d", &ac_num);
+    if (ac_num < 1 || ac_num > totalAc) {
+        printf("INVALID ACCOUNT NO!\n");
+        getch();
+        return;
+    }
+    printf("Current Balance: %d\n", account[ac_num].balance);
+    printf("Please input the amount to withdraw: ");
+    scanf("%d", &amount);
+    if (account[ac_num].balance < amount) {
+        printf("Balance is insufficient!\n");
+    }
+    else {
+        printf("Withdrawn %d\n", amount);
+        account[ac_num].balance -= amount;
+        printf("Balance after withdrawal: %d\n", account[ac_num].balance);
+        totalTrans++;
+        account[ac_num].transDone++;
+        account[ac_num].history[account[ac_num].transDone].Tamount = amount;
+        account[ac_num].history[account[ac_num].transDone].afterBalance = account[ac_num].balance;
+        account[ac_num].history[account[ac_num].transDone].Tdate = today;
+        account[ac_num].history[account[ac_num].transDone].Ttype = 2;
+        account[ac_num].history[account[ac_num].transDone].TID = totalTrans;
+        printf("Transaction ID: %d\n", totalTrans);
+    }
+
+    getch();
+}
+
+void transHistory()
+{
+    printf("Transaction History\n\n");
+    int ac_num;
+    printf("Please input Account No: ");
+    scanf("%d", &ac_num);
+    if (ac_num < 1 || ac_num > totalAc) {
+        printf("INVALID ACCOUNT NO!\n");
+        getch();
+        return;
+    }
+    int i;
+    printf("\nAccount ID: %d\n", ac_num);
+    printf("Account Name: %s\n\n", account[ac_num].ac_name);
+    printf("Total %d transactions were done\n\n", account[ac_num].transDone);
+    printf("%15s", "TRANS. ID");
+    printf("%15s", "TRANS. TYPE");
+    printf("%10s", "AMOUNT");
+    printf("%10s", "BALANCE");
+    printf("\n");
+    for (i = 1; i <= account[ac_num].transDone; i++) {
+        printf("%15d", account[ac_num].history[i].TID);
+        if (account[ac_num].history[i].Ttype==1) {
+            printf("%15s", "DEPOSIT");
+        }
+        else if (account[ac_num].history[i].Ttype==2) {
+            printf("%15s", "WITHDRAWAL");
+        }
+        else if (account[ac_num].history[i].Ttype==3) {
+            printf("%15s", "TRANSFER");
+        }
+        else printf("%15s", "RECEIVE");
+        printf("%10d", account[ac_num].history[i].Tamount);
+        printf("%10d", account[ac_num].history[i].afterBalance);
+        printf("\n");
+    }
+    printf("\nCurrent Balance: %d\n", account[ac_num].balance);
+    getch();
+}
+
+void openAc()
+{
+    printf("Open Account\n\n");
+    totalAc++;
+    ac newAc;
+    printf("Please input Account Name: ");
+    scanf("%s", newAc.ac_name);
+    printf("Your account number is: %d", totalAc);
+    newAc.transDone = 0;
+    newAc.balance = 0;
+    newAc.AcOpenDate = today;
+    account[totalAc] = newAc;
+    getch();
+}
+
+void transferMoney()
+{
+    int ac_num, acTo, amount;
+    printf("Transfer Money\n\n");
+    printf("Input account numbers\n");
+    printf("From: ");
+    scanf("%d", &ac_num);
+    if (ac_num < 1 || ac_num > totalAc) {
+        printf("INVALID ACCOUNT NO!\n");
+        getch();
+        return;
+    }
+    printf("To: ");
+    scanf("%d", &acTo);
+    if (acTo < 1 || acTo > totalAc) {
+        printf("INVALID ACCOUNT NO!\n");
+        getch();
+        return;
+    }
+
+    printf("\nCurrent Balance: %d\n", account[ac_num].balance);
+    printf("Please input the amount to transfer: ");
+    scanf("%d", &amount);
+    if (account[ac_num].balance < amount) {
+        printf("Balance is insufficient!\n");
+    }
+    else {
+        printf("Transferred %d\n", amount);
+        account[ac_num].balance -= amount;
+        printf("Balance of %s after transfer: %d\n", account[ac_num].ac_name, account[ac_num].balance);
+        totalTrans++;
+        account[ac_num].transDone++;
+        account[ac_num].history[account[ac_num].transDone].Tamount = amount;
+        account[ac_num].history[account[ac_num].transDone].afterBalance = account[ac_num].balance;
+        account[ac_num].history[account[ac_num].transDone].Tdate = today;
+        account[ac_num].history[account[ac_num].transDone].Ttype = 3;
+        account[ac_num].history[account[ac_num].transDone].TID = totalTrans;
+
+        account[acTo].balance += amount;
+        printf("Balance of %s after transfer: %d\n", account[acTo].ac_name, account[acTo].balance);
+        account[acTo].transDone++;
+        account[acTo].history[account[acTo].transDone].Tamount = amount;
+        account[acTo].history[account[acTo].transDone].afterBalance = account[acTo].balance;
+        account[acTo].history[account[acTo].transDone].Tdate = today;
+        account[acTo].history[account[acTo].transDone].Ttype = 4;
+        account[acTo].history[account[acTo].transDone].TID = totalTrans;
+
+        printf("Transaction ID: %d\n", totalTrans);
+    }
+    getch();
+}
+
+int menu()
+{
+    int opt;
+
+    today.day = 21;
+    today.month = 5;
+    today.year = 2017;
+
+    system("cls");
+
+    printf("\n\n\n\tChoose\n");
+    printf("\t\t0 for opening account\n");
+    printf("\t\t1 for depositing money\n");
+    printf("\t\t2 for withdrawing money\n");
+    printf("\t\t3 for showing transaction history\n");
+    printf("\t\t4 for showing account balance\n");
+    printf("\t\t5 for transferring money\n");
+    printf("\t\t6 for exit\n");
+
+    printf("\tEnter your option: ");
+    scanf("%d", &opt);
+
+    return opt;
+}
+
+
+int main(void)
+{
+    int opt;
+
+    do {
+        opt = menu();
+        system("cls");
+        switch (opt)
+        {
+            case 0: openAc();
+                    break;
+            case 1: depositMoney();
+                    break;
+            case 2: withdrawMoney();
+                    break;
+            case 3: transHistory();
+                    break;
+            case 4: showAcBalance();
+                    break;
+            case 5: transferMoney();
+                    break;
+        }
+
+    } while (opt!=6);
+
+
+    return 0;
+}
