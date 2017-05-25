@@ -15,7 +15,7 @@ struct circle {
     double r;
 };
 
-int inSide (struct point p,struct circle c)
+int inSide (struct point p,struct circle c)  /// checks if a point is within a circle
 {
     double r,R;
     r=c.r*c.r;
@@ -35,15 +35,22 @@ int main ()
     C.r=C.o.x=C.o.y=0.5;
     srand(time(NULL)); ///to generate random number based on time
     n=1000000;
-
-    for (i=0;i<n;i++) {
+    
+/*
+The main idea is that the ratio of area of a square and a circle inscribed in it is 4 : PI. So, if we find this ratio we can calculate
+the value of PI. For this we are going to generate large number of (here 1000000) random points and check if it is within the circle or
+not. If it is inside the circle we increase the value of cnt. Finally the ratio of total number of points (all points will be inside the 
+square) : cnt should be roughly close to the desired ratio.
+*/
+   
+    for (i=0;i<n;i++) {  
         r=rand(); ///generates random number
-        x=(r*1.0)/RAND_MAX;
-        r=rand();
-        y=(r*1.0)/RAND_MAX;
+        x=(r*1.0)/RAND_MAX; /// RAND_MAX is the highest value this function can generate. By dividing by this number we make sure the 
+        r=rand(); /// is between 0 to 1. Here we use a circle whose centre is at (0.5,0.5) and radius is 0.5. So the point must be between
+        y=(r*1.0)/RAND_MAX; ///0 to 1 to be inside the square
         P.x=x;
-        P.y=y;
-        cnt+=inSide(P,C);
+        P.y=y;  /// we have a random point (x,y)
+        cnt+=inSide(P,C); 
     }
 
     PI=(cnt*1.0*4.0)/(n*1.0);
