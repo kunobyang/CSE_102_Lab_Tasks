@@ -1,0 +1,262 @@
+#include<stdio.h>
+#include<stdlib.h>
+int menu();
+void OpenAcc();
+void DepositMoney();
+void WithdrawMoney();
+void ShowTHistory();
+void TransferMoney();
+void gotoxy(int,int);
+
+typedef struct xx{
+    int day,month,year;
+}date;
+
+typedef struct yy{
+    int Ttype;
+    date Tdate;
+    int amount;
+}Transaction;
+
+typedef struct zx{
+    int AccNo, balance,history;
+    char AccName[20];
+    Transaction THistory[100];
+    date AccOpenDate;
+}Account;
+
+Account Acc[100];
+
+int idx=0,c=0;
+FILE *fp;
+
+int main()
+{
+    int accn,mon,i,d,m,y,accn1,accn2;
+    fp=fopen("Account.txt","r");
+    int type;
+    while(fscanf(fp,"%d",&type)!=EOF)
+    {
+        switch(type)
+        {
+        case 0:fscanf(fp,"%d%s%d%d%d",&Acc[idx].AccNo,Acc[idx].AccName,&Acc[idx].AccOpenDate.day,&Acc[idx].AccOpenDate.month,&Acc[idx].AccOpenDate.year);
+        Acc[idx].balance=0;Acc[idx].history=0;idx++;break;
+        case 1:
+            fscanf(fp,"%d%d%d%d%d",&accn,&mon,&d,&m,&y);
+            for(i=0;i<idx;i++)
+            if(Acc[i].AccNo==accn){
+            Acc[i].balance+=mon;
+            Acc[i].THistory[Acc[i].history].Ttype=1;
+            Acc[i].THistory[Acc[i].history].amount=mon;
+            Acc[i].THistory[Acc[i].history].Tdate.day=d;
+            Acc[i].THistory[Acc[i].history].Tdate.month=m;
+            Acc[i].THistory[Acc[i].history].Tdate.year=y;
+            Acc[i].history++;
+            break;
+            }
+            break;
+        case 2:
+            fscanf(fp,"%d%d%d%d%d",&accn,&mon,&d,&m,&y);
+            for(i=0;i<idx;i++)
+            if(Acc[i].AccNo==accn){
+            Acc[i].balance-=mon;
+            Acc[i].THistory[Acc[i].history].Ttype=2;
+            Acc[i].THistory[Acc[i].history].amount=mon;
+            Acc[i].THistory[Acc[i].history].Tdate.day=d;
+            Acc[i].THistory[Acc[i].history].Tdate.month=m;
+            Acc[i].THistory[Acc[i].history].Tdate.year=y;
+            Acc[i].history++;
+            break;
+            }
+            break;
+        case 5:
+            fscanf(fp,"%d%d%d%d%d%d",&accn1,&accn2,&mon,&d,&m,&y);
+             for(i=0;i<idx;i++){
+        if(Acc[i].AccNo==accn1){
+                 Acc[i].balance-=mon;
+            Acc[i].THistory[Acc[i].history].Ttype=2;
+            Acc[i].THistory[Acc[i].history].amount=mon;
+            Acc[i].THistory[Acc[i].history].Tdate.day=d;
+            Acc[i].THistory[Acc[i].history].Tdate.month=m;
+            Acc[i].THistory[Acc[i].history].Tdate.year=y;
+            Acc[i].history++;
+        }
+        else if(Acc[i].AccNo==accn2){
+            Acc[i].balance+=mon;
+            Acc[i].THistory[Acc[i].history].Ttype=1;
+            Acc[i].THistory[Acc[i].history].amount=mon;
+            Acc[i].THistory[Acc[i].history].Tdate.day=d;
+            Acc[i].THistory[Acc[i].history].Tdate.month=m;
+            Acc[i].THistory[Acc[i].history].Tdate.year=y;
+            Acc[i].history++;
+        }
+        }
+    }
+    }
+    fp=fopen("Account.txt","a");
+    int option;
+
+    do{
+        option=menu();
+        switch(option){
+        case 0:OpenAcc();break;
+        case 1:DepositMoney();break;
+        case 2:WithdrawMoney();break;
+        case 3:ShowTHistory();break;
+        case 4:ShowAccBalance();break;
+        case 5:TransferMoney();
+        }
+        getch();
+    }while(option!=6);
+    fclose(fp);
+}
+
+int menu(){
+    system("cls");
+    int option;
+    puts("Choose");
+    puts("0 for opening account");
+    puts("1 for depositing money");
+    puts("2 for withdrawing money");
+    puts("3 for showing transaction history");
+    puts("4 for showing account balance");
+    puts("5 for transferring money");
+    puts("6 for exit");
+    scanf("%d",&option);
+    if(option!=6&&option!=4&&option!=3)
+    fprintf(fp,"%d\n",option);
+    return option;
+}
+
+void OpenAcc(){
+    system("cls");
+    printf("Enter account number: ");
+    scanf("%d",&Acc[idx].AccNo);
+    printf("Enter your name: ");
+    scanf("%s",Acc[idx].AccName);
+    printf("Enter account opening date(DD/MM/YYYY): ");
+    scanf("%d%d%d",&Acc[idx].AccOpenDate.day,&Acc[idx].AccOpenDate.month,&Acc[idx].AccOpenDate.year);
+    fprintf(fp,"%d %s %d %d %d\n",Acc[idx].AccNo,Acc[idx].AccName,Acc[idx].AccOpenDate.day,Acc[idx].AccOpenDate.month,Acc[idx].AccOpenDate.year);
+    Acc[idx].balance=0,Acc[idx].history=0;idx++;
+}
+
+void DepositMoney(){
+    system("cls");
+    int accn,mon,i,d,m,y;
+    printf("Enter account number: ");
+    scanf("%d",&accn);
+    printf("Enter amount of money: ");
+    scanf("%d",&mon);
+    printf("Enter date(DD/MM/YYYY): ");
+    scanf("%d%d%d",&d,&m,&y);
+    fprintf(fp,"%d %d %d %d %d\n",accn,mon,d,m,y);
+    for(i=0;i<idx;i++)
+        if(Acc[i].AccNo==accn){
+        Acc[i].balance+=mon;
+        Acc[i].THistory[Acc[i].history].Ttype=1;
+        Acc[i].THistory[Acc[i].history].amount=mon;
+        Acc[i].THistory[Acc[i].history].Tdate.day=d;
+        Acc[i].THistory[Acc[i].history].Tdate.month=m;
+        Acc[i].THistory[Acc[i].history].Tdate.year=y;
+        Acc[i].history++;
+        return;
+    }
+    printf("The account was not found");
+}
+
+void WithdrawMoney(){
+     system("cls");
+    int accn,mon,i,d,m,y;
+    printf("Enter account number: ");
+    scanf("%d",&accn);
+    printf("Enter amount of money: ");
+    scanf("%d",&mon);
+    printf("Enter date(DD/MM/YYYY): ");
+    scanf("%d%d%d",&d,&m,&y);
+    fprintf(fp,"%d %d %d %d %d\n",accn,mon,d,m,y);
+    for(i=0;i<idx;i++)
+        if(Acc[i].AccNo==accn){
+        Acc[i].balance-=mon;
+        Acc[i].THistory[Acc[i].history].Ttype=2;
+        Acc[i].THistory[Acc[i].history].amount=mon;
+        Acc[i].THistory[Acc[i].history].Tdate.day=d;
+        Acc[i].THistory[Acc[i].history].Tdate.month=m;
+        Acc[i].THistory[Acc[i].history].Tdate.year=y;
+        Acc[i].history++;
+        return;
+    }
+    printf("The account was not found");
+}
+
+void ShowTHistory()
+{
+    system("cls");
+    int accn,i,j;
+    printf("Enter account number: ");
+    scanf("%d",&accn);
+    for(i=0;i<idx;i++)
+    if(Acc[i].AccNo==accn){
+        for(j=0;j<Acc[i].history;j++)
+            if(Acc[i].THistory[j].Ttype==1)
+            printf("%d taka was deposited on %d/%d/%d\n",Acc[i].THistory[j].amount,Acc[i].THistory[j].Tdate.day,Acc[i].THistory[j].Tdate.month,Acc[i].THistory[j].Tdate.year);
+            else
+            printf("%d taka was withdrawn on %d/%d/%d\n",Acc[i].THistory[j].amount,Acc[i].THistory[j].Tdate.day,Acc[i].THistory[j].Tdate.month,Acc[i].THistory[j].Tdate.year);
+            return;
+    }
+    printf("The account was not found");
+}
+
+void ShowAccBalance(){
+    system("cls");
+    int accn,i;
+    printf("Enter account number: ");
+    scanf("%d",&accn);
+    for(i=0;i<idx;i++)
+        if(Acc[i].AccNo==accn){
+        printf("The account balance is %d",Acc[i].balance);
+        return;
+    }
+    printf("The account was not found");
+}
+
+void TransferMoney(){
+    system("cls");
+    int accn1,accn2,mon,d,m,y,i;
+    printf("Enter first account number: ");
+    scanf("%d",&accn1);
+    printf("Enter second account number: ");
+    scanf("%d",&accn2);
+    printf("Enter amount of money: ");
+    scanf("%d",&mon);
+    printf("Enter date(DD/MM/YYYY): ");
+    scanf("%d%d%d",&d,&m,&y);
+    fprintf(fp,"%d %d %d %d %d %d\n",accn1,accn2, mon,d,m,y);
+    for(i=0;i<idx;i++)
+    if(Acc[i].AccNo==accn1){
+        Acc[i].balance-=mon;
+        Acc[i].THistory[Acc[i].history].Ttype=2;
+        Acc[i].THistory[Acc[i].history].amount=mon;
+        Acc[i].THistory[Acc[i].history].Tdate.day=d;
+        Acc[i].THistory[Acc[i].history].Tdate.month=m;
+        Acc[i].THistory[Acc[i].history].Tdate.year=y;
+        Acc[i].history++;
+        break;
+    }
+    if(i==idx){
+        printf("The first account was not found\n");
+        return;
+    }
+    for(i=0;i<idx;i++)
+    if(Acc[i].AccNo==accn2){
+        Acc[i].balance+=mon;
+        Acc[i].THistory[Acc[i].history].Ttype=1;
+        Acc[i].THistory[Acc[i].history].amount=mon;
+        Acc[i].THistory[Acc[i].history].Tdate.day=d;
+        Acc[i].THistory[Acc[i].history].Tdate.month=m;
+        Acc[i].THistory[Acc[i].history].Tdate.year=y;
+        Acc[i].history++;
+        break;
+    }
+    if(i==idx)printf("The second account was not found\n");
+    int a=0;
+}
